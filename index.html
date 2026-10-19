@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="author" content="Pengtao Ma" />
+    <meta
+      name="description"
+      content="Pengtao Ma (马捧涛), master's student at Tsinghua University. Research interests: efficient vision-language models, multimodal perception, LLM pretraining, and long-context modeling."
+    />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Pengtao Ma | 马捧涛" />
+    <meta
+      property="og:description"
+      content="Research, publications, and projects in efficient vision-language models and multimodal perception."
+    />
+    <title>Pengtao Ma | 马捧涛</title>
+    <link
+      rel="icon"
+      href="assets/branding/tsinghua-seal.png"
+      type="image/png"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a
+          class="university-brand"
+          href="https://www.tsinghua.edu.cn/"
+          target="_blank"
+          rel="noopener"
+          ><span
+            class="university-wordmark"
+            role="img"
+            aria-label="Tsinghua University · 清华大学"
+          ></span
+        ></a>
+        <nav class="main-nav" aria-label="Page sections">
+          <a href="#about" data-i18n="navAbout">About</a
+          ><a href="#publications" data-i18n="navPubs">Publications</a
+          ><a href="#research" data-i18n="navResearch">Research</a
+          ><a href="#education" data-i18n="navEducation">Education</a
+          ><a href="#honors" data-i18n="navHonors">Honors</a>
+        </nav>
+        <button
+          class="language-button"
+          type="button"
+          aria-label="Switch to Chinese"
+          aria-pressed="false"
+        >
+          <span id="language-label">中文</span>
+        </button>
+      </div>
+    </header>
+    <main id="main" class="page">
+      <section id="about" class="overview" aria-labelledby="name-heading">
+        <div class="identity-header">
+          <a
+            class="portrait-link"
+            href="assets/pengtao-ma.jpg"
+            target="_blank"
+            rel="noopener"
+            aria-label="View portrait of Pengtao Ma"
+            ><img
+              class="portrait"
+              src="assets/pengtao-ma.jpg"
+              width="520"
+              height="788"
+              alt="Pengtao Ma"
+              fetchpriority="high"
+          /></a>
+          <div class="identity-details">
+            <h1 id="name-heading">
+              Pengtao Ma <span class="name-divider" aria-hidden="true">|</span>
+              <span class="chinese-name" lang="zh-CN">马捧涛</span>
+            </h1>
+            <p class="profile-role" data-i18n="profileRole">Master's Student</p>
+            <p class="profile-affiliation" data-i18n="profileAffiliation">
+              Tsinghua University · Shenzhen International Graduate School
+            </p>
+            <div class="contact-links">
+              <a class="profile-email" href="mailto:mpt25@mails.tsinghua.edu.cn"
+                >mpt25@mails.tsinghua.edu.cn</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="bio">
+          <p data-i18n="bio1">
+            I am a master's student in Electronic Information at
+            <a
+              href="https://www.sigs.tsinghua.edu.cn/en/"
+              target="_blank"
+              rel="noopener"
+              >Tsinghua Shenzhen International Graduate School</a
+            >, advised by
+            <a href="https://chen-xinlei.com/" target="_blank" rel="noopener"
+              >Prof. Xinlei Chen</a
+            >
+            in the AIoT group. I received my bachelor's degree in Communication
+            Engineering from Northeastern University, China, in 2025.
+          </p>
+          <p data-i18n="bio2">
+            My research focuses on
+            <strong>efficient vision-language models</strong> and
+            <strong>multimodal perception</strong>, with an emphasis on visual
+            token pruning and inference optimization. I am also interested in
+            LLM pretraining and long-context modeling, with a broader interest
+            in perception for embodied systems.
+          </p>
+          <p class="research-interests" data-i18n="interests">
+            <strong>Research interests:</strong> VLM inference optimization ·
+            Multimodal perception · LLM pretraining · Long-context modeling ·
+            Long-range dependency data
+          </p>
+        </div>
+      </section>
+      <section
+        id="publications"
+        class="section"
+        aria-labelledby="publications-heading"
+      >
+        <h2 id="publications-heading" data-i18n="pubsHeading">Publications</h2>
+        <article class="publication" id="pub-eventprune">
+          <div class="paper-figures">
+            <figure>
+              <a
+                class="figure-link"
+                href="assets/papers/eventprune-overview.webp"
+                data-figure
+                data-source="https://arxiv.org/abs/2605.19506"
+                data-caption="EventPrune — figure from the original paper"
+                ><img
+                  src="assets/papers/eventprune-overview.webp"
+                  width="1587"
+                  height="987"
+                  alt="Original EventPrune paper figure showing event-guided visual token selection and dynamic spatial reasoning"
+                  loading="lazy"
+              /></a>
+              <figcaption data-i18n="eventFigure">
+                Spatial reasoning and token retention (Fig. 1, p. 2).
+              </figcaption>
+            </figure>
+          </div>
+          <div class="paper-text">
+            <h3>
+              <a
+                href="https://arxiv.org/abs/2605.19506"
+                target="_blank"
+                rel="noopener"
+                >EventPrune: Cascaded Event-Assisted Token Pruning for Efficient
+                First-Person Dynamic Spatial Reasoning</a
+              >
+            </h3>
+            <p class="authors">
+              <strong>Pengtao Ma</strong><sup>†</sup>, Ziliang Zhou<sup>†</sup>,
+              Ciyu Ruan, Haoyang Wang, Kaiyuan Li, Zihang Gong, Wenhua Ding,
+              Chen Gao, Jingao Xu, Xinlei Chen
+            </p>
+            <p class="venue">
+              <strong>NeurIPS 2026</strong
+              ><span data-i18n="accepted"> · Accepted</span>
+            </p>
+            <p data-i18n="eventSummary">
+              EventPrune uses event-derived motion cues to prune redundant
+              visual tokens in vision-language models. Its cascaded framework
+              reduces inference cost while retaining the information needed for
+              first-person dynamic spatial reasoning.
+            </p>
+            <div class="paper-links">
+              [<a
+                href="https://arxiv.org/pdf/2605.19506"
+                target="_blank"
+                rel="noopener"
+                data-i18n="paper"
+                >Paper</a
+              >] [<a
+                href="https://arxiv.org/abs/2605.19506"
+                target="_blank"
+                rel="noopener"
+                >arXiv</a
+              >] [<a
+                href="https://neurips.cc/virtual/2026/poster/151793"
+                target="_blank"
+                rel="noopener"
+                >NeurIPS</a
+              >]
+            </div>
+          </div>
+        </article>
+        <article class="publication" id="pub-survey">
+          <div class="paper-figures">
+            <figure>
+              <a
+                class="figure-link"
+                href="assets/papers/event-camera-survey.webp"
+                data-figure
+                data-source="https://arxiv.org/abs/2503.22943"
+                data-caption="Event Camera Meets Mobile Embodied Perception — figure from the original survey"
+                ><img
+                  src="assets/papers/event-camera-survey.webp"
+                  width="1200"
+                  height="828"
+                  alt="Original survey figure illustrating event-based vision and mobile embodied perception"
+                  loading="lazy"
+              /></a>
+              <figcaption data-i18n="surveyFigure">
+                Mobile perception tasks (Fig. 9, p. 23).
+              </figcaption>
+            </figure>
+          </div>
+          <div class="paper-text">
+            <h3>
+              <a
+                href="https://doi.org/10.1145/3786332"
+                target="_blank"
+                rel="noopener"
+                >Event Camera Meets Mobile Embodied Perception: Abstraction,
+                Algorithm, Acceleration, Application</a
+              >
+            </h3>
+            <p class="authors">
+              Haoyang Wang, Ruishan Guo, <strong>Pengtao Ma</strong>, Ciyu Ruan,
+              Xinyu Luo, Wenhua Ding, Tianyang Zhong, Jingao Xu, Yunhao Liu,
+              Xinlei Chen
+            </p>
+            <p class="venue">
+              <strong>ACM Computing Surveys</strong>, 58(8), Article 206, 2026
+            </p>
+            <p data-i18n="surveySummary">
+              This survey organizes event-based mobile perception around four
+              pillars: abstraction, algorithms, acceleration, and applications.
+              It connects event representations and sensor fusion with efficient
+              deployment and tasks such as tracking, odometry, and
+              reconstruction.
+            </p>
+            <div class="paper-links">
+              [<a
+                href="https://arxiv.org/pdf/2503.22943"
+                target="_blank"
+                rel="noopener"
+                data-i18n="paper"
+                >Paper</a
+              >] [<a
+                href="https://doi.org/10.1145/3786332"
+                target="_blank"
+                rel="noopener"
+                >ACM</a
+              >] [<a
+                href="https://arxiv.org/abs/2503.22943"
+                target="_blank"
+                rel="noopener"
+                >arXiv</a
+              >]
+            </div>
+          </div>
+        </article>
+        <article class="publication" id="pub-icct">
+          <div class="paper-figures" id="icct-figures">
+            <figure>
+              <a
+                class="figure-link"
+                href="assets/papers/icct-led-ins-fusion.png"
+                data-figure
+                data-source="https://doi.org/10.1109/ICCT62411.2024.10946397"
+                data-caption="LED and INS fusion positioning with AAVSD-Kalman filtering (Fig. 2)"
+                ><img
+                  src="assets/papers/icct-led-ins-fusion.png"
+                  width="2260"
+                  height="666"
+                  alt="Original ICCT Figure 2: distributed LED positioning and inertial navigation fused through an AAVSD-Kalman filter"
+                  loading="lazy"
+              /></a>
+              <figcaption data-i18n="icctFigure">
+                LED–INS fusion positioning framework (Fig. 2).
+              </figcaption>
+            </figure>
+          </div>
+          <div class="paper-text">
+            <h3>
+              <a
+                href="https://doi.org/10.1109/ICCT62411.2024.10946397"
+                target="_blank"
+                rel="noopener"
+                >Low-cost Granary Vehicles Positioning Using a Distributed LED
+                Network</a
+              >
+            </h3>
+            <p class="authors">
+              Jingya Liu, <strong>Pengtao Ma</strong>, Lingmin Zhang, Yu Geng,
+              Lei Yan
+            </p>
+            <p class="venue">
+              <strong>IEEE ICCT 2024</strong> · 24th International Conference on
+              Communication Technology, pp. 775–780
+            </p>
+            <p data-i18n="icctSummary">
+              A low-cost localization method for granary vehicles using a
+              distributed LED network and inertial navigation. An attitude-aware
+              AAVSD-Kalman filter fuses the two positioning sources to reduce
+              accumulated drift in simulation.
+            </p>
+            <div class="paper-links">
+              [<a
+                href="https://ieeexplore.ieee.org/document/10946397"
+                target="_blank"
+                rel="noopener"
+                >IEEE Xplore</a
+              >] [<a
+                href="https://doi.org/10.1109/ICCT62411.2024.10946397"
+                target="_blank"
+                rel="noopener"
+                >DOI</a
+              >] [<button
+                type="button"
+                class="bibtex-button"
+                aria-expanded="false"
+                aria-controls="icct-bibtex"
+              >
+                BibTeX <span aria-hidden="true">+</span></button
+              >]
+            </div>
+            <div class="bibtex-panel" id="icct-bibtex" hidden>
+              <pre><code>@inproceedings{liu2024granary,
+  title={Low-cost Granary Vehicles Positioning Using a Distributed LED Network},
+  author={Liu, Jingya and Ma, Pengtao and Zhang, Lingmin and Geng, Yu and Yan, Lei},
+  booktitle={2024 IEEE 24th International Conference on Communication Technology (ICCT)},
+  pages={775--780},
+  year={2024},
+  doi={10.1109/ICCT62411.2024.10946397}
+}</code></pre>
+              <button class="copy-bibtex" type="button" data-i18n="copy">
+                Copy citation</button
+              ><span
+                class="copy-status"
+                role="status"
+                aria-live="polite"
+              ></span>
+            </div>
+          </div>
+        </article>
+      </section>
+      <section id="research" class="section" aria-labelledby="research-heading">
+        <h2 id="research-heading" data-i18n="researchHeading">
+          Research Projects
+        </h2>
+        <article class="research-project">
+          <h3 data-i18n="retinaTitle">
+            Retina Camera: Cone and Rod Cells on Silicon for Efficient Robotic
+            Vision
+          </h3>
+          <p class="project-meta" data-i18n="retinaMeta">
+            Oct 2024–present · Co-first author · Manuscript in preparation
+          </p>
+          <p data-i18n="retinaSummary">
+            Combines intensity and event pixels in a retina-inspired sensor,
+            exploring motion-guided semantic propagation and frame-assisted
+            corner detection for efficient visual perception.
+          </p>
+        </article>
+        <article class="research-project">
+          <h3 data-i18n="hazardTitle">
+            Event-Based Detection of Sudden Road Hazards
+          </h3>
+          <p class="project-meta" data-i18n="hazardMeta">
+            Sep 2025–present · Core perception pipeline design
+          </p>
+          <p data-i18n="hazardSummary">
+            Combines event optical flow, RGB–event object detection, and
+            crossing-risk filtering to detect road users emerging suddenly from
+            behind occlusions.
+          </p>
+        </article>
+      </section>
+      <section
+        id="education"
+        class="section"
+        aria-labelledby="education-heading"
+      >
+        <h2 id="education-heading" data-i18n="educationHeading">Education</h2>
+        <div class="education-entry">
+          <a
+            class="institution-mark"
+            href="https://www.tsinghua.edu.cn/"
+            target="_blank"
+            rel="noopener"
+            ><img
+              src="assets/branding/tsinghua-seal.png"
+              width="72"
+              height="72"
+              alt="Tsinghua University seal"
+              loading="lazy"
+          /></a>
+          <div>
+            <h3 data-i18n="tsinghua">Tsinghua University</h3>
+            <p data-i18n="masters">
+              Master's in Electronic Information, Shenzhen International
+              Graduate School
+            </p>
+            <p data-i18n="advisor">Advisor: Prof. Xinlei Chen</p>
+            <p data-i18n="recommendedAdmission">
+              Admitted through recommendation (entrance-exam exemption)
+            </p>
+          </div>
+          <p class="education-date" data-i18n="mastersDates">
+            Sep 2025–Jun 2028
+          </p>
+        </div>
+        <div class="education-entry">
+          <a
+            class="institution-mark"
+            href="https://www.neu.edu.cn/"
+            target="_blank"
+            rel="noopener"
+            ><img
+              src="assets/branding/northeastern-seal.png"
+              width="72"
+              height="72"
+              alt="Northeastern University, China seal"
+              loading="lazy"
+          /></a>
+          <div>
+            <h3 data-i18n="neu">Northeastern University, China</h3>
+            <p data-i18n="bachelors">Bachelor's in Communication Engineering</p>
+            <p data-i18n="bachelorsAdvisor">Advisor: Lei Yan</p>
+          </div>
+          <p class="education-date" data-i18n="bachelorsDates">
+            Sep 2021–Jun 2025
+          </p>
+        </div>
+      </section>
+      <section id="honors" class="section" aria-labelledby="honors-heading">
+        <h2 id="honors-heading" data-i18n="honorsHeading">Selected Honors</h2>
+        <ul class="honors-list">
+          <li data-i18n="honorTsinghua">
+            <strong>First-Class Comprehensive Excellence Scholarship</strong>,
+            Tsinghua University
+          </li>
+          <li data-i18n="honor1">
+            <strong>National Scholarship</strong> (twice), Northeastern
+            University
+          </li>
+          <li data-i18n="honor2">
+            Shangjiayuan Scholarship, Northeastern University
+          </li>
+          <li data-i18n="honor3">
+            First-Class University Scholarship, Northeastern University
+          </li>
+          <li data-i18n="honor4">
+            Innovation and Entrepreneurship Scholarship, awarded three times
+          </li>
+        </ul>
+      </section>
+      <section
+        id="contact"
+        class="section contact-section"
+        aria-labelledby="contact-heading"
+      >
+        <h2 id="contact-heading" data-i18n="contactHeading">Contact</h2>
+        <p data-i18n="contactText">
+          For research discussions and collaboration, please reach me at
+          <a href="mailto:mpt25@mails.tsinghua.edu.cn"
+            >mpt25@mails.tsinghua.edu.cn</a
+          >.
+        </p>
+      </section>
+      <footer>
+        <p>
+          © <span id="year">2026</span> Pengtao Ma
+          <span aria-hidden="true">·</span>
+          <span data-i18n="updated">Last updated: October 2026</span>
+        </p>
+        <a href="#top" data-i18n="backTop">Back to top</a>
+      </footer>
+    </main>
+    <dialog class="figure-dialog" aria-labelledby="figure-dialog-title">
+      <div class="figure-dialog-toolbar">
+        <p id="figure-dialog-title" data-i18n="figureTitle">
+          Figure from the paper
+        </p>
+        <button class="close-figure" type="button" aria-label="Close figure">
+          ×
+        </button>
+      </div>
+      <img
+        class="enlarged-figure"
+        src="assets/papers/eventprune-overview.webp"
+        alt=""
+      />
+      <div class="figure-dialog-caption">
+        <p class="figure-caption"></p>
+        <a
+          class="figure-paper-source"
+          href="https://arxiv.org/"
+          target="_blank"
+          rel="noopener"
+          data-i18n="figureSource"
+          >Original paper</a
+        >
+      </div>
+    </dialog>
+  </body>
+</html>
