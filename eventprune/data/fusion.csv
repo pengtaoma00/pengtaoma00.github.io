@@ -1,0 +1,11 @@
+Strategy,γ shallow,γ middle,γ deep,Accuracy (%),Analysis
+Uniform,0.0,0.0,0.0,34.18,Baseline (Attn)
+Uniform,0.3,0.3,0.3,35.66,Weak Fusion
+Uniform,0.5,0.5,0.5,36.21,Medium Fusion
+Uniform,0.7,0.7,0.7,37.47,Strong Fusion
+Uniform,1.0,1.0,1.0,37.36,Pure Event
+Peak (∧),0.2,0.6,0.2,34.60,Mid-focus
+Valley (∨),0.6,0.2,0.6,36.32,Ends-focus
+Growth (↗),0.3,0.5,0.8,35.99,Suboptimal
+Decay (↘),0.8,0.5,0.3,37.04,Supports Hyp.
+Bias-guided (ECP),0.8,0.6,0.5,37.62,Best Balance
