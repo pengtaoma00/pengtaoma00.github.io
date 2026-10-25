@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EventPrune (NeurIPS 2026): training-free event-assisted visual token pruning for efficient embodied spatial reasoning. Paper, method, results, and ESR-Real.">
+  <meta property="og:title" content="EventPrune · NeurIPS 2026">
+  <meta property="og:description" content="Event-assisted pruning preserves spatial reasoning with 80% fewer visual tokens.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pengtaoma00.github.io/eventprune/">
+  <meta property="og:image" content="https://pengtaoma00.github.io/eventprune/assets/method_overview_hero.png">
+  <meta name="theme-color" content="#142b40">
+  <link rel="canonical" href="https://pengtaoma00.github.io/eventprune/">
+  <title>EventPrune · NeurIPS 2026</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="page.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <nav class="topnav" aria-label="Project navigation">
+    <a class="wordmark" href="#top">EventPrune</a>
+    <div><a href="#motivation">Motivation</a><a href="#method">Method</a><a href="#results">Results</a><a href="#dataset">ESR-Real</a><a href="#resources">Resources</a></div>
+  </nav>
+  <main id="main">
+    <header id="top" class="hero">
+      <p class="venue">NeurIPS 2026</p>
+      <h1>EventPrune: Cascaded Event-Assisted Token Pruning for Efficient Embodied Spatial Reasoning</h1>
+      <p class="authors"><span class="author-line"><span class="author">Pengtao Ma<sup>1†</sup></span>, <span class="author">Ziliang Zhou<sup>1†</sup></span>, <span class="author">Ciyu Ruan<sup>1</sup></span>, <span class="author">Haoyang Wang<sup>3</sup></span>, <span class="author">Kaiyuan Li<sup>1</sup></span></span><span class="author-line"><span class="author">Zihang Gong<sup>2</sup></span>, <span class="author">Wenhua Ding<sup>1</sup></span>, <span class="author">Chen Gao<sup>3*</sup></span>, <span class="author">Jingao Xu<sup>4</sup></span>, <span class="author">Xinlei Chen<sup>1*</sup></span></span></p>
+      <p class="affiliations"><sup>1</sup> Tsinghua SIGS &nbsp; <sup>2</sup> Harbin Institute of Technology<br><sup>3</sup> Tsinghua University &nbsp; <sup>4</sup> The University of Hong Kong</p>
+      <p class="author-note">† Equal contribution &nbsp; * Corresponding authors</p>
+      <div class="links"><a class="primary" href="https://arxiv.org/abs/2605.19506">Read the paper ↗</a><a href="#resources">Code &amp; data</a><a href="https://chen-xinlei.com/">Research group ↗</a><a href="https://pengtaoma00.github.io/">Pengtao Ma ↗</a></div>
+      <p class="lead">Events tell us <em>where motion happens</em>.<br>Use that signal to keep the RGB tokens that matter.</p>
+      <p class="result-line"><strong>80% fewer visual tokens</strong><span>37.62% vs. 36.31% accuracy</span><span><strong>1.89×</strong> model-side speedup</span></p>
+    </header>
+
+    <section class="teaser" aria-label="ECP pipeline overview">
+      <figure class="wide-figure"><a href="assets/method_overview_hero.png" aria-label="Open the full-resolution ECP method figure"><img src="assets/method_overview_hero.png" width="7805" height="3459" alt="Three-stage ECP pipeline: event-guided temporal sampling, motion-saliency filtering, and event–attention ranking fusion."></a><figcaption>ECP progressively removes temporal and spatial redundancy. Click any research figure to inspect it at full resolution.</figcaption></figure>
+    </section>
+
+    <section id="motivation" class="section">
+      <p class="eyebrow">01 / Motivation</p><h2>Preserve structure, beyond attention alone</h2>
+      <div class="motivation-grid">
+        <div><p>Embodied spatial reasoning depends on object boundaries and continuous motion during rapid ego-motion. Fragmented token selection can discard the structure needed to answer spatial questions.</p><figure><a href="assets/figure1_structure_comparison.png"><img loading="lazy" src="assets/figure1_structure_comparison.png" width="2825" height="1775" alt="Original paper comparison: existing pruning fragments physical structure, while ECP retains object boundaries."></a><figcaption>Selected Figure 1 panel: qualitative structure retention.</figcaption></figure></div>
+        <div><h3>Observation: peripheral attention sink</h3><p>Across <strong>21,920 frames and 28 layers</strong>, visual attention favors image borders. The middle-layer group reaches a <strong>5.64× peripheral-to-center ratio</strong>, with similar layer-wise profiles across the evaluated datasets (<em>r</em> = 0.897).</p><figure><a href="assets/attention_depth_maps.png"><img loading="lazy" src="assets/attention_depth_maps.png" width="3180" height="704" alt="Shallow, middle and deep attention heatmaps showing greater attention near image borders."></a><figcaption>Event saliency provides a complementary cue for ranking RGB tokens.</figcaption></figure></div>
+      </div>
+    </section>
+
+    <section id="method" class="section">
+      <p class="eyebrow">02 / Method</p><h2>A motion prior, a three-stage cascade</h2>
+      <p>Dense video tokens make spatial reasoning expensive. Event Cascade Pruning (ECP) uses high-frequency event activity to select frames, filter regions, and calibrate token ranking. Events determine pruning scores and masks; they are not added to the model as extra event embeddings. The backbone requires no additional training.</p>
+
+      <div class="steps">
+        <article><h3><span>ETS</span> Anchor motion-rich moments</h3><p>Density-filtered event activity and changes locate informative temporal windows. Refine these anchors for coverage and select the corresponding RGB keyframes.</p></article>
+        <article><h3><span>EMSF</span> Filter event-inactive regions</h3><p>Accumulate events over each visual token’s spatial support, normalize saliency within a frame, and retain motion-salient candidates before attention.</p></article>
+        <article><h3><span>EARF</span> Calibrate attention with motion</h3><p>Fuse per-frame ranks of attention and event saliency, retain top-K RGB tokens, and use smaller event weights in deeper layers.</p></article>
+      </div>
+    </section>
+
+    <section id="results" class="section">
+      <p class="eyebrow">03 / Results</p><h2>Fewer tokens, stronger spatial reasoning</h2>
+      <p>Qwen2.5-VL-7B-Instruct on UrbanVideo-Bench and VSI-Bench with simulated events. Average accuracy covers 13 tasks. The full-token reference is <strong>36.31%</strong>.</p>
+      <div class="table-wrap"><table><caption>Average accuracy (%) by visual-token retention</caption><thead><tr><th scope="col">Method</th><th scope="col">70% tokens</th><th scope="col">50% tokens</th><th scope="col">20% tokens</th></tr></thead><tbody><tr><th scope="row">FastV</th><td>36.28</td><td>35.67</td><td>32.64</td></tr><tr><th scope="row">DivPrune</th><td>36.16</td><td>36.77</td><td>34.40</td></tr><tr class="ours"><th scope="row">ECP</th><td>37.78</td><td>38.16</td><td>37.62</td></tr></tbody></table></div>
+      <div class="results-grid"><div><h3>Model-side efficiency at 20% tokens</h3><div class="table-wrap"><table><thead><tr><th scope="col">Metric</th><th scope="col">Full tokens</th><th scope="col">ECP</th></tr></thead><tbody><tr><th scope="row">Latency (s)</th><td>2.10</td><td>1.11</td></tr><tr><th scope="row">GFLOPs</th><td>294.6</td><td>141.9</td></tr><tr><th scope="row">Memory (MB)</th><td>18,848</td><td>16,637</td></tr></tbody></table></div><p class="fine">Model-side inference with prepared RGB–event inputs; offline event synthesis is excluded.</p></div><div><h3>With native events</h3><p class="native-result">54.58% <span>vs. 51.90%</span></p><p>On ESR-Real at 50% token retention, ECP improves accuracy by <strong>2.68 percentage points</strong> over the full-token baseline.</p><p>At 20% retention on the public benchmarks, ECP improves over FastV by 4.98 points and DivPrune by 3.22 points.</p></div></div>
+    </section>
+
+    <section id="dataset" class="section">
+      <p class="eyebrow">04 / ESR-Real</p><h2>Spatial reasoning with native RGB–event observations</h2>
+      <p>ESR-Real pairs synchronized RGB and event streams with <strong>700+ question–answer pairs across six tasks</strong>, spanning perception, cognition, and reasoning.</p>
+      <div class="scene-grid">
+        <figure><div class="scene-pair"><a href="assets/esr_perception_event_1.png"><img loading="lazy" src="assets/esr_perception_event_1.png" width="1280" height="720" alt="Scene 1: native event observation of an indoor seating area."></a><a href="assets/esr_perception_rgb_1.png"><img loading="lazy" src="assets/esr_perception_rgb_1.png" width="1280" height="720" alt="Scene 1: matching RGB observation of the seating area."></a></div><figcaption>Scene 1 · Events / RGB</figcaption></figure>
+        <figure><div class="scene-pair"><a href="assets/esr_reasoning_event_3.png"><img loading="lazy" src="assets/esr_reasoning_event_3.png" width="1280" height="720" alt="Scene 2: native event observation of tables and a basketball."></a><a href="assets/esr_reasoning_rgb_3.png"><img loading="lazy" src="assets/esr_reasoning_rgb_3.png" width="1280" height="720" alt="Scene 2: matching RGB observation showing a basketball to the left of the tables."></a></div><figcaption>Scene 2 · Events / RGB</figcaption></figure>
+      </div>
+      <div class="qa"><h3>Illustrative question</h3><p>In Scene 2, where is the basketball relative to the tables? <strong>(A)</strong></p><ul><li><strong>A.</strong> To the left</li><li><strong>B.</strong> To the right</li><li><strong>C.</strong> Horizontally aligned</li><li><strong>D.</strong> Not visible</li></ul></div>
+    </section>
+
+    <section id="resources" class="section">
+      <p class="eyebrow">05 / Resources</p><h2>Paper, code and data</h2>
+      <div class="resource-list"><p><strong>Paper.</strong> <a href="https://arxiv.org/abs/2605.19506">arXiv:2605.19506 ↗</a> · <a href="https://arxiv.org/pdf/2605.19506">PDF ↗</a></p><p><strong>Code &amp; ESR-Real data.</strong> Release in preparation. Public links will be added here when available.</p><p><strong>Research group.</strong> <a href="https://chen-xinlei.com/">Xinlei Chen · Tsinghua SIGS ↗</a></p><p><strong>First author.</strong> <a href="https://pengtaoma00.github.io/">Pengtao Ma ↗</a></p></div>
+      <div class="citation-head"><h3>Citation</h3><button id="copy-citation" type="button">Copy BibTeX</button><span id="copy-status" role="status" aria-live="polite"></span></div>
+      <pre id="bibtex">@misc{ma2026eventprune,
+  title={EventPrune: Cascaded Event-Assisted Token Pruning for
+         Efficient First-Person Dynamic Spatial Reasoning},
+  author={Pengtao Ma and Ziliang Zhou and Ciyu Ruan and Haoyang Wang
+          and Kaiyuan Li and Zihang Gong and Wenhua Ding and Chen Gao
+          and Jingao Xu and Xinlei Chen},
+  year={2026},
+  eprint={2605.19506},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2605.19506}
+}</pre>
+      <p class="fine">The arXiv citation retains the preprint title. This page uses the embodied spatial reasoning framing of the camera-ready manuscript.</p>
+    </section>
+  </main>
+  <footer><span>EventPrune · NeurIPS 2026</span><a href="https://pengtaoma00.github.io/">Pengtao Ma</a><a href="https://chen-xinlei.com/">Research group</a><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>
