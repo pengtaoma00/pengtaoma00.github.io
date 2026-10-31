@@ -1,8 +1,0 @@
-Retention,Variant,Average,UrbanVideo-Bench,VSI-Bench
-Full,Baseline,36.31,40.86,32.03
-70%,Uniform,38.10,42.91,33.13
-70%,Bias-guided (ECP),37.78,42.49,33.35
-50%,Uniform,37.09,42.56,29.88
-50%,Bias-guided (ECP),38.16,42.85,33.76
-20%,Uniform,34.86,39.99,29.77
-20%,Bias-guided (ECP),37.62,42.78,32.76

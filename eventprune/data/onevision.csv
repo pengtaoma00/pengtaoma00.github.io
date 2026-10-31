@@ -1,7 +1,0 @@
-Dataset,Retention,Best non-ECP,ECP,Gain (pt)
-UrbanVideo-Bench + VSI-Bench,70%,36.43,37.08,+0.65
-UrbanVideo-Bench + VSI-Bench,50%,35.38,36.64,+1.26
-UrbanVideo-Bench + VSI-Bench,20%,33.55,34.33,+0.78
-ESR-Real,70%,40.90,41.61,+0.71
-ESR-Real,50%,42.31,43.44,+1.13
-ESR-Real,20%,41.04,42.74,+1.70
